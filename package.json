@@ -25,7 +25,8 @@
   "main": "preview.js",
   "scripts": {
     "build": "rollup -c rollup.config.js",
-    "clean": "rm -rf ./manager.js ./preview.js"
+    "clean": "rm -rf ./manager.js ./preview.js",
+    "prepare": "npm run build"
   },
   "dependencies": {
     "@emotion/styled": "^10.0.14",
