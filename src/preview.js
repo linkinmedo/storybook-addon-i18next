@@ -1,5 +1,5 @@
 /* eslint react/jsx-filename-extension:off */
-import React from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import addons, { makeDecorator } from '@storybook/addons';
 import { I18nextProvider, useTranslation } from 'react-i18next';
@@ -8,7 +8,10 @@ import { CONFIGURE_EVENT_ID, LANGUAGE_CHANGED_EVENT_ID } from './constants';
 
 const DirectionProvider = props => {
   const [, i18n] = useTranslation();
-  return <div dir={i18n.dir()}>{props.children}</div>;
+    useEffect(() => {
+      document.body.dir = i18n.dir();
+    }, [i18n, i18n.language]);
+  return <div>{props.children}</div>;
 };
 
 class Wrapper extends React.Component {
